@@ -6,13 +6,49 @@
   
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+  <meta name="description" content="Redisredis为什么这么快一方面是因为它是内存数据库，所有操作都在内存中实现，内存的访问速度非常快。 另一方面，归功于它的数据结构，高效的数据结构是redis快速处理数据的基础 redis有哪些数据类型redis有string，list，hash，sorted set，set类型，其中除了string外都是集合数据类型，一个键对应了一个集合 它们的底层实现如下：  键和值之间使用的是什么结构">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/2023/08/10/redis/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Redisredis为什么这么快一方面是因为它是内存数据库，所有操作都在内存中实现，内存的访问速度非常快。 另一方面，归功于它的数据结构，高效的数据结构是redis快速处理数据的基础 redis有哪些数据类型redis有string，list，hash，sorted set，set类型，其中除了string外都是集合数据类型，一个键对应了一个集合 它们的底层实现如下：  键和值之间使用的是什么结构">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/82/01/8219f7yy651e566d47cc9f661b399f01.jpg?wh=4000*1188">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/1e/b4/1eca7135d38de2yy16681c2bbc4f3fb4.jpg?wh=1878*1126">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/00/ea/00ff790d4f6225aaeeebba34a71d8bea.jpg?wh=3472*2250">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/72/f8/72f547f18dbac788c7d11yy167d7ebf8.jpg?wh=2284*682">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/65/08/6528c699fdcf40b404af57040bb8d208.jpg?wh=4000*1088">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/a2/58/a2e5a3571e200cb771ed8a1cd14d5558.jpg?wh=13333*7500">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/40/45/403c2ab725dca8d44439f8994959af45.jpg?wh=3543*1791">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/19/0d/1945703abf16ee14e2f7559873e4e60d.jpg?wh=3807*1416">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/f2/4c/f2e9b8830db46d959daa6a39fbf4a14c.jpg?wh=3671*1743">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/ca/b1/ca42698128aa4c8a374efbc575ea22b1.jpg?wh=2822*1535">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/88/e0/88fdc68eb94c44efbdf7357260091de0.jpg?wh=2499*1404">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/e0/84/e0832d432c14c98066a94e0ef86af384.jpg?wh=2322*1260">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/5f/d9/5f6ceeb9337e158cc759e23c0f375fd9.jpg?wh=2843*1934">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/37/57/37c6a8d5abd65906368e7c4a6b938657.jpg?wh=1926*1400">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/34/57/3409948e9d3e8aa5cd7cafb9b66c2857.jpg?wh=2214*1656">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/ce/e3/ce83d1346c9642fdbbf5ffbe701bfbe3.jpg?wh=3072*1938">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/b6/e7/b6cbc5161388fdf4c9b49f3802ef53e7.jpg?wh=2219*1371">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/f6/9f/f6d4df5f7d6e80de29e2c6446b02429f.jpg?wh=3457*972">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/d7/bc/d79d46ec4aa22bf46fde3ae1a99fc2bc.jpg?wh=3000*1459">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/d9/09/d9689a38cbe67c3008d8ba99663c2f09.jpg?wh=3065*1633">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/5c/3d/5ceb2ab6f61c064284c8f8811431bc3d.jpg?wh=3000*1252">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/9f/a4/9f1316094001ca64c8dfca37c2c49ea4.jpg?wh=2720*598">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/2a/a6/2a47b3f6fd7beaf466a675777ebd28a6.jpg?wh=3000*1557">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/7d/44/7dyycf727f9396eb9788644474855a44.jpg?wh=2156*1239">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/6b/3d/6b0b489ec0c1c5049c8df84d77fa243d.jpg?wh=2750*1631">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/04/f6/04bdd13b760016ec3b30f4b02e133df6.jpg?wh=1757*765">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/02/y5/0201f85c84203300ae4085c60e955yy5.jpg?wh=1702*1678">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/11/6f/11ae5e620c63de76448bc658fe6a496f.jpg?wh=2889*1355">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/98/68/98f7d32499e4386b40aebc3622aa7268.jpg?wh=2953*1342">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/4f/73/4f8589410f77df16311dd29131676373.jpg?wh=3000*1921">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/7c/1b/7c3e5def912d7c8c45bca00f955d751b.jpg?wh=2176*1582">
+<meta property="article:published_time" content="2023-08-10T03:27:38.154Z">
+<meta property="article:modified_time" content="2023-07-21T09:21:37.864Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static001.geekbang.org/resource/image/82/01/8219f7yy651e566d47cc9f661b399f01.jpg?wh=4000*1188">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -71,9 +107,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-redis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-redis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/10/redis/" class="article-date">
   <time class="dt-published" datetime="2023-08-10T03:27:38.154Z" itemprop="datePublished">2023-08-10</time>
@@ -509,62 +543,19 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/10/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2023-08-10T02:41:13.051Z" itemprop="datePublished">2023-08-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/10/hello-world/">Hello World</a>
-    </h1>
+    <a href="/2023/08/10/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/10/hello-world/" data-id="cll4lmt800000x0ux7x7b4k2f" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
 
 
 </section>
