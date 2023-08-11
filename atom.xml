@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>zjpBlog</title>
   
-  
+  <subtitle>君子坐而论道</subtitle>
   <link href="https://zjpzytzjp.github.io/atom.xml" rel="self"/>
   
   <link href="https://zjpzytzjp.github.io/"/>
-  <updated>2023-07-21T09:21:37.864Z</updated>
+  <updated>2023-08-11T08:02:21.037Z</updated>
   <id>https://zjpzytzjp.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>redis</title>
     <link href="https://zjpzytzjp.github.io/2023/08/10/redis/"/>
     <id>https://zjpzytzjp.github.io/2023/08/10/redis/</id>
-    <published>2023-08-10T03:27:38.154Z</published>
-    <updated>2023-07-21T09:21:37.864Z</updated>
+    <published>2023-08-10T08:01:00.000Z</published>
+    <updated>2023-08-11T08:02:21.037Z</updated>
     
     
       
@@ -34,6 +34,10 @@
     
     
     
+    <category term="redis" scheme="https://zjpzytzjp.github.io/categories/redis/"/>
+    
+    
+    <category term="redis" scheme="https://zjpzytzjp.github.io/tags/redis/"/>
     
   </entry>
   
