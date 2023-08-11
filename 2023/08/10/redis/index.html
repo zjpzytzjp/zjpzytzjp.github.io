@@ -54,7 +54,9 @@ redis有哪些数据类型redis有string，lis">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -422,7 +424,7 @@ redis有哪些数据类型redis有string，lis">
 <p>压缩列表：实际是一个数组，和数组不同的是压缩列表有zlbyte，zltail，zllen三个字段，分别表示，列表长度，列表偏移量，列表中entry的个数。表尾还有一个zlend</p>
 <p>压缩列表定位第一个元素和最后一个元素可以通过三个字段直接定位，复杂度为O（1）。</p>
 <p>跳表：跳表在链表的基础上加上了多级索引，通过索引位置的几次跳转来实现数据的快速定位。</p>
-<img src="https://static001.geekbang.org/resource/image/1e/b4/1eca7135d38de2yy16681c2bbc4f3fb4.jpg?wh=1878*1126" alt="img" style="zoom: 33%;" />
+<img src="https://static001.geekbang.org/resource/image/1e/b4/1eca7135d38de2yy16681c2bbc4f3fb4.jpg?wh=1878*1126" alt="img" style="zoom: 33%;">
 
 <p>当数据量很大时，跳表的查找复杂度就是 O(logN)</p>
 <h3 id="整数数组和压缩列表在查找时间复杂度上不占优势，为什么redis仍然使用"><a href="#整数数组和压缩列表在查找时间复杂度上不占优势，为什么redis仍然使用" class="headerlink" title="整数数组和压缩列表在查找时间复杂度上不占优势，为什么redis仍然使用"></a>整数数组和压缩列表在查找时间复杂度上不占优势，为什么redis仍然使用</h3><p>1、内存利用率，数组和压缩列表都是非常紧凑的数据结构，它比链表占用的内存要更少。Redis是内存数据库，大量数据存到内存中，此时需要做尽可能的优化，提高内存的利用率。</p>
@@ -433,12 +435,12 @@ redis有哪些数据类型redis有string，lis">
 <h3 id="单线程redis为什么会这么快"><a href="#单线程redis为什么会这么快" class="headerlink" title="单线程redis为什么会这么快"></a>单线程redis为什么会这么快</h3><p>一方面，Redis 的大部分操作在内存上完成，再加上它采用了高效的数据结构，例如哈希表和跳表，这是它实现高性能的一个重要原因。</p>
 <p>另一方面，就是 Redis 采用了多路复用机制，使其在网络 IO 操作中能并发处理大量的客户端请求，实现高吞吐率。</p>
 <h3 id="基于多路复用的高性能IO模型"><a href="#基于多路复用的高性能IO模型" class="headerlink" title="基于多路复用的高性能IO模型"></a>基于多路复用的高性能IO模型</h3><p>在redis只运行单个线程的情况下，该机制允许内核同时存在多个监听套接字和已连接套接字。内核会一直监听这些套接字的链接情况和数据情况，一旦有请求到达，立马通知redis线程处理，这就实现了redis单线程同时处理多个IO流的效果。</p>
-<img src="https://static001.geekbang.org/resource/image/00/ea/00ff790d4f6225aaeeebba34a71d8bea.jpg?wh=3472*2250" alt="img" style="zoom: 25%;" />
+<img src="https://static001.geekbang.org/resource/image/00/ea/00ff790d4f6225aaeeebba34a71d8bea.jpg?wh=3472*2250" alt="img" style="zoom: 25%;">
 
 
 
-<p>为了保证请求到达时，可以及时通知redis线程，select&#x2F;epoll提供了事件回调机制，即针对不同事件的发生，调用相应的处理函数。</p>
-<p>回调机制：select&#x2F;epoll 一旦监测到 FD 上有请求到达时，就会触发相应的事件。这些事件会被放入一个事件队列，redis单线程对该事件队列不断进行处理，并且调用对应事件回调函数。</p>
+<p>为了保证请求到达时，可以及时通知redis线程，select/epoll提供了事件回调机制，即针对不同事件的发生，调用相应的处理函数。</p>
+<p>回调机制：select/epoll 一旦监测到 FD 上有请求到达时，就会触发相应的事件。这些事件会被放入一个事件队列，redis单线程对该事件队列不断进行处理，并且调用对应事件回调函数。</p>
 <h3 id="redis的持久化"><a href="#redis的持久化" class="headerlink" title="redis的持久化"></a>redis的持久化</h3><h4 id="AOF机制"><a href="#AOF机制" class="headerlink" title="AOF机制"></a>AOF机制</h4><h4 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h4><p>redis先执行命令，把数据写入内存，然后才记录日志。AOF 里记录的是 Redis 收到的每一条命令，这些命令是以文本形式保存的。</p>
 <h4 id="好处："><a href="#好处：" class="headerlink" title="好处："></a>好处：</h4><p>避免出现记录错误命令的情况。它是在命令执行后才记录日志，所以不会阻塞当前的写操作。</p>
 <h4 id="风险："><a href="#风险：" class="headerlink" title="风险："></a>风险：</h4><p>如果刚执行完一个命令，还没有来得及记日志就宕机了，那么这个命令和相应的数据就有丢失的风险。</p>
@@ -494,7 +496,7 @@ redis有哪些数据类型redis有string，lis">
 <h4 id="主观下线和客观下线"><a href="#主观下线和客观下线" class="headerlink" title="主观下线和客观下线"></a>主观下线和客观下线</h4><p>哨兵在监控主库是否下线的时候可能受制于自己的网络问题等原因发生误判，也就是主库其实没有下线，但哨兵认为它下线开始了主从切换，主从切换过程资源消耗较大。</p>
 <p>因此为了避免出现误判，引入了多实例组成的集群模式进行部署哨兵，多个哨兵一起判断这个主库是否下线了，避免单个哨兵网络不好的情况</p>
 <p>主观下线就是某个哨兵认为主库下线了，客观下线是一定量的哨兵都认为主库下线了，主库才会被标记为客观下线</p>
-<p>最好要有 N&#x2F;2 + 1 个实例判断主库为“主观下线”，才能最终判定主库为“客观下线”。（多少实例，管理员可以调）</p>
+<p>最好要有 N/2 + 1 个实例判断主库为“主观下线”，才能最终判定主库为“客观下线”。（多少实例，管理员可以调）</p>
 <p><img src="https://static001.geekbang.org/resource/image/19/0d/1945703abf16ee14e2f7559873e4e60d.jpg?wh=3807*1416" alt="img"></p>
 <h4 id="如何选择新主库"><a href="#如何选择新主库" class="headerlink" title="如何选择新主库"></a>如何选择新主库</h4><p>选主库的过程主要是两个“筛选+打分”。</p>
 <p><img src="https://static001.geekbang.org/resource/image/f2/4c/f2e9b8830db46d959daa6a39fbf4a14c.jpg?wh=3671*1743" alt="img"></p>
@@ -507,7 +509,7 @@ redis有哪些数据类型redis有string，lis">
 <p>我们想要找的从库，它的 slave_repl_offset 需要最接近 master_repl_offset。如果在所有从库中，有从库的 slave_repl_offset 最接近 master_repl_offset，那么它的得分就最高，可以作为新主库。</p>
 <p>第三轮：ID号小的从库得分高</p>
 <p>在优先级和复制进度都相同的情况下，ID 号最小的从库得分最高，会被选为新主库。</p>
-<h4 id="基于pub-sub机制的哨兵集群组成"><a href="#基于pub-sub机制的哨兵集群组成" class="headerlink" title="基于pub&#x2F;sub机制的哨兵集群组成"></a>基于pub&#x2F;sub机制的哨兵集群组成</h4><p>pub&#x2F;sub机制就是发布订阅机制</p>
+<h4 id="基于pub-sub机制的哨兵集群组成"><a href="#基于pub-sub机制的哨兵集群组成" class="headerlink" title="基于pub/sub机制的哨兵集群组成"></a>基于pub/sub机制的哨兵集群组成</h4><p>pub/sub机制就是发布订阅机制</p>
 <p>部署哨兵集群的时候，配置哨兵时只设置了主库的信息，并没有给其他哨兵的连接信息，那么哨兵之间是如何连接上的呢？</p>
 <p>哨兵只要和主库建立起了连接，就可以在主库上发布消息了，比如说发布它自己的连接信息（IP 和端口）。同时，它也可以从主库上订阅消息，获得其他哨兵发布的连接信息。当多个哨兵实例都在主库上做了发布和订阅操作后，它们之间就能知道彼此的 IP 地址和端口。</p>
 <p>除了哨兵实例，我们自己编写的应用程序也可以通过 Redis 进行消息的发布和订阅。所以，为了区分不同应用的消息，Redis 会以频道的形式，对这些消息进行分门别类的管理。所谓的频道，实际上就是消息的类别。当消息类别相同时，它们就属于同一个频道。反之，就属于不同的频道。只有订阅了同一个频道的应用，才能通过发布的消息进行信息交换。</p>
@@ -516,7 +518,7 @@ redis有哪些数据类型redis有string，lis">
 <p>这是由哨兵向主库发送 INFO 命令来完成的。主库会把从库列表给哨兵</p>
 <p><img src="https://static001.geekbang.org/resource/image/88/e0/88fdc68eb94c44efbdf7357260091de0.jpg?wh=2499*1404" alt="img"></p>
 <p>但是，哨兵不能只和主、从库连接。因为，主从库切换后，客户端也需要知道新主库的连接信息，才能向新主库发送请求操作。所以，哨兵还需要完成把新主库的信息告诉客户端这个任务。</p>
-<p>从本质上说，哨兵就是一个运行在特定模式下的 Redis 实例，只不过它并不服务请求操作，只是完成监控、选主和通知的任务。所以，每个哨兵实例也提供 pub&#x2F;sub 机制，客户端可以从哨兵订阅消息。哨兵提供的消息订阅频道有很多，不同频道包含了主从库切换过程中的不同关键事件。</p>
+<p>从本质上说，哨兵就是一个运行在特定模式下的 Redis 实例，只不过它并不服务请求操作，只是完成监控、选主和通知的任务。所以，每个哨兵实例也提供 pub/sub 机制，客户端可以从哨兵订阅消息。哨兵提供的消息订阅频道有很多，不同频道包含了主从库切换过程中的不同关键事件。</p>
 <h4 id="有哪个哨兵进行主从切换"><a href="#有哪个哨兵进行主从切换" class="headerlink" title="有哪个哨兵进行主从切换"></a>有哪个哨兵进行主从切换</h4><p>确定由哪个哨兵执行主从切换的过程，和主库“客观下线”的判断过程类似，也是一个“投票仲裁”的过程。</p>
 <p>客观下线的流程：</p>
 <p>任何一个实例只要自身判断主库“主观下线”后，就会给其他实例发送 is-master-down-by-addr 命令。接着，其他实例会根据自己和主库的连接情况，做出 Y 或 N 的响应，Y 相当于赞成票，N 相当于反对票。</p>
@@ -531,7 +533,7 @@ redis有哪些数据类型redis有string，lis">
 <p>Redis CLuster方案采用哈希槽的方式处理数据和实例的映射关系。</p>
 <p>在 Redis Cluster 方案中，一个切片集群共有 16384 个哈希槽，这些哈希槽类似于数据分区，每个键值对都会根据它的 key，被映射到一个哈希槽中。</p>
 <p>映射过程：首先根据键值对的 key，按照CRC16 算法计算一个 16 bit 的值；然后，再用这个 16bit 值对 16384 取模，得到 0~16383 范围内的模数，每个模数代表一个相应编号的哈希槽。</p>
-<p>然后把这些槽平均分配给实例上，例如，如果集群中有 N 个实例，那么，每个实例上的槽个数为 16384&#x2F;N 个。</p>
+<p>然后把这些槽平均分配给实例上，例如，如果集群中有 N 个实例，那么，每个实例上的槽个数为 16384/N 个。</p>
 <h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>string类型提供了一个键对应一个值的保存形式，而且string可以保存二进制字节流，只要把数据转换成二进制字节数组就可以保存。</p>
 <p>string类型并不是适合所有场景的，它有一个明显的短板，那就是它保存数据的时候所消耗的内存空间较多</p>
 <h4 id="为什么string类型空间消耗大"><a href="#为什么string类型空间消耗大" class="headerlink" title="为什么string类型空间消耗大"></a>为什么string类型空间消耗大</h4><p>其实，除了记录实际数据之外，string还会记录数据长度，空间使用等信息，也被叫做元数据。</p>
@@ -751,7 +753,7 @@ redis有哪些数据类型redis有string，lis">
 <p>并发访问操作主要是对数据进行修改，分为读取，修改，写回这三步，如果不对其控制，会导致错误。</p>
 <p>redis提供了两种方法避免这个问题</p>
 <h4 id="单命令操作"><a href="#单命令操作" class="headerlink" title="单命令操作"></a>单命令操作</h4><p>由于redis本身是单命令操作的，命令之间是互斥的。所以我们可以把读取，修改，写回，这三个步骤变成一个命令，单命令，再加上redis的互斥，就能保障并发控制了。</p>
-<p>比如INCR&#x2F;DECR</p>
+<p>比如INCR/DECR</p>
 <h4 id="Lua脚本"><a href="#Lua脚本" class="headerlink" title="Lua脚本"></a>Lua脚本</h4><p>但是有些命令，没那么简单，需要根据实际需求去调整，这个时候我们可以采用Lua脚本的方式。Redis 会把整个 Lua 脚本作为一个整体执行，在执行的过程中不会被其他命令打断，从而保证了 Lua 脚本中操作的原子性。</p>
 <h3 id="Redis实现分布式锁"><a href="#Redis实现分布式锁" class="headerlink" title="Redis实现分布式锁"></a>Redis实现分布式锁</h3><h4 id="基于单节点的分布式锁"><a href="#基于单节点的分布式锁" class="headerlink" title="基于单节点的分布式锁"></a>基于单节点的分布式锁</h4><p>使用setnx命令，这个命令在执行时会判断键值对是否存在，如果不存在，就设置键值对的值，如果存在，就不做任何设置。</p>
 <p>对于释放锁操作来说，我们可以在执行完业务逻辑后，使用 DEL 命令删除锁变量。</p>
@@ -761,7 +763,7 @@ redis有哪些数据类型redis有string，lis">
 <p>第二个风险。如果客户端 A 执行了 SETNX 命令加锁后，假设客户端 B 执行了 DEL 命令释放锁，此时，客户端 A 的锁就被误释放了。如果客户端 C 正好也在申请加锁，就可以成功获得锁，进而开始操作共享数据。这样一来，客户端 A 和 C 同时在对共享数据进行操作，数据就会被修改错误，这也是业务层不能接受的。</p>
 <p>给客户端加上唯一标识来解决第二个风险。</p>
 <p>因为在加锁操作中，每个客户端都使用了一个唯一标识，所以在释放锁操作时，我们需要判断锁变量的值，是否等于执行释放锁操作的客户端的唯一标识</p>
-<p>&#x2F;&#x2F;释放锁 比较unique_value是否相等，避免误释放<br>if redis.call(“get”,KEYS[1]) &#x3D;&#x3D; ARGV[1] then<br>    return redis.call(“del”,KEYS[1])<br>else<br>    return 0<br>end</p>
+<p>//释放锁 比较unique_value是否相等，避免误释放<br>if redis.call(“get”,KEYS[1]) == ARGV[1] then<br>    return redis.call(“del”,KEYS[1])<br>else<br>    return 0<br>end</p>
 <p>为什么要用Lua脚本，因为其中包含了读取锁变量，判断值，删除锁变量这三个 操作，所以需要原子性操作。</p>
 <h4 id="基于多节点的分布式锁"><a href="#基于多节点的分布式锁" class="headerlink" title="基于多节点的分布式锁"></a>基于多节点的分布式锁</h4><p>Redlock 算法的基本思路，是让客户端和多个独立的 Redis 实例依次请求加锁，如果客户端能够和半数以上的实例成功地完成加锁操作，那么我们就认为，客户端成功地获得分布式锁了，否则加锁失败。</p>
 <p>第一步是，客户端获取当前时间。第二步是，客户端按顺序依次向 N 个 Redis 实例执行加锁操作。</p>
