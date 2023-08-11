@@ -4,9 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="java,redis,mysql,java并发,JVM,算法">
-    <meta name="description" content="nettynetty入门服务端ServerBootstrap()  :  启动器，负责组装netty组件，启动服务器
-NioEventLoopGroup() : EventLoop是一个selector加上一个thread就是一个event">
+    <meta name="keywords" content="JAVA基础, java,redis,mysql,java并发,JVM,算法">
+    <meta name="description" content="JAVA基础">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +17,7 @@ NioEventLoopGroup() : EventLoop是一个selector加上一个thread就是一个ev
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>zjpBlog</title>
+    <title>JAVA基础 | zjpBlog</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/favicon.png">
     
 
@@ -53,9 +52,9 @@ NioEventLoopGroup() : EventLoop是一个selector加上一个thread就是一个ev
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="zjpBlog" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="zjpBlog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -343,7 +342,7 @@ NioEventLoopGroup() : EventLoop是一个selector加上一个thread就是一个ev
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">JAVA基础</h1>
                 </div>
             </div>
         </div>
@@ -365,12 +364,25 @@ NioEventLoopGroup() : EventLoop是一个selector加上一个thread就是一个ev
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/JAVA/">
+                                <span class="chip bg-color">JAVA</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/JAVA/" class="post-category">
+                                JAVA
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -379,7 +391,7 @@ NioEventLoopGroup() : EventLoop是一个selector加上一个thread就是一个ev
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-07-06
+                    2023-08-10
                 </div>
                 
 
@@ -388,7 +400,7 @@ NioEventLoopGroup() : EventLoop是一个selector加上一个thread就是一个ev
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    4.8k
                 </div>
                 
 
@@ -405,92 +417,152 @@ NioEventLoopGroup() : EventLoop是一个selector加上一个thread就是一个ev
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="netty"><a href="#netty" class="headerlink" title="netty"></a>netty</h1><h2 id="netty入门"><a href="#netty入门" class="headerlink" title="netty入门"></a>netty入门</h2><h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><p>ServerBootstrap()  :  启动器，负责组装netty组件，启动服务器</p>
-<p>NioEventLoopGroup() : EventLoop是一个selector加上一个thread就是一个eventloop，即循环处理可读可写事件，既然是group就是组的意思，里面有BossEventLoop和WorkerEventLoop，分别处理accept和读写的事件</p>
-<p>NioServerSocketChannel() : 选择服务器ServerSocketChannel的实现，OIO，BIO</p>
-<p>childHandle：决定了worker（child）能做哪些事情</p>
-<p>channelInitializer：channel代表和客户端进行数据读写的通道， Initializer初始化，负责添加别的handler</p>
-<p>StringDecoder()：将ByteBuf进行解码，转换成字符串</p>
-<p>ChannelInboundHandleAdapter：自定义handler</p>
-<p>bind：绑定监听端口</p>
-<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p>Bootstrap() : 启动类</p>
-<p>StringEncoder() : 编码器</p>
-<p>connect：链接哪个服务器</p>
-<p>sync（）：阻塞方法，直到连接建立</p>
-<p>writeAndFlush（）：向服务器发送数据</p>
-<p>channel：就像数据的通道</p>
-<p>msg：流动的数据</p>
-<p>handle：数据的处理工序</p>
-<p>pipeline：工序有多道，就是流水线</p>
-<p>handle分为Inbound 和 Outbound，入站和出站</p>
-<p>eventloop：干活的工人，处理数据</p>
-<ol>
-<li>工人可以管理多个channel 的 io操作，且一个工人只要负责了一个channel，就会绑定，负责到底</li>
-<li>一个工人既可以处理io操作，也可以处理普通任务</li>
-<li>工人按照pipeline的顺序，按序执行handle</li>
-</ol>
-<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><h3 id="EventLoop"><a href="#EventLoop" class="headerlink" title="EventLoop"></a>EventLoop</h3><p>事件循环对象</p>
-<p>eventloop本质上是一个单线程执行器（同时维护了一个selector），里面有run方法源源不断地处理Channel里面的IO事件</p>
-<p>由于它继承过一个线程池的类，因此包含所有的线程池的方法</p>
-<p>并且还包含判断当前线程是否属于此EventLoop的方法和查看自己属于哪个EventLoopGroup</p>
-<p>事件循环组</p>
-<p>EventLoopGroup是一组EventLoop，Channel会调用EventLoopGroup中的register方法来绑定其中一个eventloop，后续这个channel的IO事件都由此Eventloop执行（保证了IO的线程安全）</p>
-<p>如何实现handle换人，源码分析</p>
-<p><code>static void invokeChannelRead(final AbstractChannelHandlerContext next, Object msg) {     final Object m = next.pipeline.touch(ObjectUtil.checkNotNull(msg, "msg"), next);       // 下一个handle的事件循环是否和这个事件循环是一个线程</code></p>
-<p>​			<code>EventExecutor executor = next.executor();//返回下一个handle的eventLoop</code></p>
-<p>​	<code>// 是，直接调用        if (executor.inEventLoop()) {  ​        next.invokeChannelRead(m); ​    	}</code>		</p>
-<p>​     <code>// 不是，将要执行的代码作为任务提交给下一个事件循环处理</code></p>
-<p><code>else {         executor.execute(new Runnable() { // 如果是外部线程，则提交给异步任务队列             @Override             public void run() {                 next.invokeChannelRead(m);             }         });     } }</code></p>
-<h3 id="channel"><a href="#channel" class="headerlink" title="channel"></a>channel</h3><p>channel的主要作用：</p>
-<ol>
-<li>close()关闭chanel</li>
-<li>closeFuture()处理channel的关闭</li>
-</ol>
-<p>​			{</p>
-<p>​				如果想要在关闭channel后执行一些操作会发现一个问题，那就是因为close方法也是异步调用的方法，				这就导致了，写在close方法后的操作不是在真正关闭后执行的，因为close异步的，执行close后会立马				执行之后的代码，达不到想要的效果，因此我们需要用closedFuture对象，调用sync方法解决</p>
-<p>​			}</p>
-<p>​		其中sync()：同步等待channel关闭</p>
-<p>​				{</p>
-<p>​						如果不适用sync方法会出现问题，因为connect方法是异步非阻塞的，main线程调用了connect，						但是实际执行connect的是nio线程，没有sync方法，main方法直接去准备拿channel了，但是那时						候connect还没执行完，sync会阻塞当前线程，直到nio线程执行完毕</p>
-<p>​					}</p>
-<p>​				addlistener：异步等待channel关闭</p>
-<ol start="3">
-<li>pipeline()添加处理器</li>
-<li>write：写入数据</li>
-<li>writeAndFlush：将数据写入并刷出</li>
-</ol>
-<p>*带有future，promise的类型都是和 异步方法配套使用的</p>
-<p>异步提升的是吞吐量而不是缩短响应时间</p>
-<h3 id="Future-Promise"><a href="#Future-Promise" class="headerlink" title="Future &amp; Promise"></a>Future &amp; Promise</h3><p>jdk的future只能同步</p>
-<p>netty的future可以同步也能异步，但都是等到任务结束才能得到结果</p>
-<p>netty promise脱离了任务独立存在，只作为两个线程传递结果的容器</p>
-<h3 id="channel-1"><a href="#channel-1" class="headerlink" title="channel"></a>channel</h3><p>用来处理Channel的各种事件，分为入站和出站</p>
-<h3 id="pipeline"><a href="#pipeline" class="headerlink" title="pipeline"></a>pipeline</h3><p>所有的handle连成串，就是pipeline</p>
-<p>pipeline.addlast()：添加处理器</p>
-<p>super.channelRead()：把数据传递给下一个handle</p>
-<p>使用channel.write（）会从tail开始往前找，使用ctx会从当前的handle开始往前找</p>
-<h3 id="ByteBuf"><a href="#ByteBuf" class="headerlink" title="ByteBuf"></a>ByteBuf</h3><p>是对字节数据的封装</p>
-<p>创建方法：</p>
-<p><code>ByteBuf buffer = ByteBufAllocator.DEFAULT.buffer(10);</code></p>
-<h4 id="直接内存和堆内存"><a href="#直接内存和堆内存" class="headerlink" title="直接内存和堆内存"></a>直接内存和堆内存</h4><p>直接内存创建和销毁代价昂贵，但读写性能高（少一次内存复制），适合配合池化功能一起使用</p>
-<p>直接内存对GC压力小，因为这部分内存不受JVM垃圾回收的管理，但也要及时主动释放</p>
-<h4 id="池化"><a href="#池化" class="headerlink" title="池化"></a>池化</h4><p>池化最大的意义在于可以重用bytebuf，如果没有池化，每次都要创建新的bytebuf实例，这个操作对于直接内存代价昂贵，有了池化可以重用bytebuf池中的实例，并且采用内存分配算法提升分配效率，高并发时，池化也更节约内存，防止内存溢出</p>
-<h4 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h4><p><img src="C:\Users\zoujiapeng\AppData\Roaming\Typora\typora-user-images\image-20230707111444450.png" alt="image-20230707111444450"></p>
-<p>bytebuf有容量和最大容量，容量超了就会开启扩容。</p>
-<p>其中灰色为读指针已经读过的地方，为废弃的，绿色为写指针已经写了，读指针还没读的区域，为可读区域，蓝色部分为容量足够但写指针还没写的区域，为可写区域</p>
-<h4 id="内存释放"><a href="#内存释放" class="headerlink" title="内存释放"></a>内存释放</h4><p>Netty使用的是引用计数法来控制回收内存，每个bytebuf对象的初始计数为1，调用release方计数减1，如果计数为0，则被回收，调用retain方法计数加一</p>
-<p>由谁来执行release呢？</p>
-<p>谁是最后负责人，谁来执行release。</p>
-<h4 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h4><p>零拷贝的体现之一，对bytebuf进行切片成多个Bytebuf，切片后的bytebuf没有发生内存复制，切片后的bytebuf维护独立的read，write指针</p>
-<h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><ul>
-<li>池化，可以复用池中bytebuf实例，更节约内存，减少内存溢出的可能</li>
-<li>读写指针分离，不需要像bytebuffer一样切换读写模式</li>
-<li>可以自动扩容</li>
-<li>支持链式调用</li>
-<li>很多地方体现了零拷贝，例如slice，duplicate，compositebytebuf</li>
+                <h1 id="JAVA基础"><a href="#JAVA基础" class="headerlink" title="JAVA基础"></a>JAVA基础</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="java语言的特点"><a href="#java语言的特点" class="headerlink" title="java语言的特点"></a>java语言的特点</h3><ul>
+<li>面向对象</li>
+<li>平台无关</li>
+<li>支持多线程</li>
+<li>支持网络编程</li>
+<li>编译与解释并存</li>
 </ul>
-<h2 id="netty进阶"><a href="#netty进阶" class="headerlink" title="netty进阶"></a>netty进阶</h2><h3 id="粘包与半包"><a href="#粘包与半包" class="headerlink" title="粘包与半包"></a>粘包与半包</h3><p>粘包是因为TCP有一个滑动窗口，滑动窗口缓存了多个报文就会粘包</p>
-<p>半包是滑动窗口不够大，只能把一个报文的一部分装下发送再发送剩下的</p>
+<h3 id="JVM，JRE，JDK"><a href="#JVM，JRE，JDK" class="headerlink" title="JVM，JRE，JDK"></a>JVM，JRE，JDK</h3><p>JVM是java虚拟机，是运行java字节码的虚拟机。JVM在不同系统由不同的JVM实现，目的是使相同的字节码最后能得到相同的结果。JVM是实现java一处编译到处运行的关键所在。</p>
+<p>JRE是java运行时环境，它是运行已编译的java所需要的内容的集合。</p>
+<p>JDK是提供给开发者使用的，能够创建和编译java程序，它包含jre和其他的java所需要的编译器</p>
+<h3 id="什么是字节码"><a href="#什么是字节码" class="headerlink" title="什么是字节码"></a>什么是字节码</h3><p>字节码就是JVM可以理解的代码。</p>
+<h3 id="为什么说java编译与解释并存"><a href="#为什么说java编译与解释并存" class="headerlink" title="为什么说java编译与解释并存"></a>为什么说java编译与解释并存</h3><p>因为java同时具备编译型和解释型语言的特征，需要先编译，再解释，java程序编译生成字节码文件，然后被java解释器解释。</p>
+<h3 id="java与c-区别"><a href="#java与c-区别" class="headerlink" title="java与c++区别"></a>java与c++区别</h3><ul>
+<li>java不提供指针来直接访问内存</li>
+<li>java类是单继承的，c++是多继承的</li>
+<li>java有垃圾自动回收机制，不需要程序员手动释放无用内存。</li>
+</ul>
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><h3 id="java中的基本数据类型"><a href="#java中的基本数据类型" class="headerlink" title="java中的基本数据类型"></a>java中的基本数据类型</h3><p>java中有8种数据类型</p>
+<p>分别为</p>
+<p>整数型：byte，short，int，long</p>
+<p>浮点型：float，double</p>
+<p>字符型：char</p>
+<p>布尔型：boolean</p>
+<p><img src="C:\Users\zoujiapeng\AppData\Roaming\Typora\typora-user-images\image-20230718170554535.png" alt="image-20230718170554535"></p>
+<p>记忆方法，从byte，short，int，long字节数从小到大，1,2,4,8，知道字节数就应该知道位数是字节数*2</p>
+<p>其中char为两个字节，特殊记。</p>
+<p>float，到double，4位变8位</p>
+<h3 id="基本类型和包装类型的区别"><a href="#基本类型和包装类型的区别" class="headerlink" title="基本类型和包装类型的区别"></a>基本类型和包装类型的区别</h3><p><strong>用途</strong>：除了定义一些常量和局部变量之外，我们在其他地方比如方法参数、对象属性中很少会使用基本类型来定义变量。并且，包装类型可用于泛型，而基本类型不可以。</p>
+<p><strong>存储方式</strong>：基本数据类型的局部变量存放在 Java 虚拟机栈中的局部变量表中，基本数据类型的成员变量（未被 <code>static</code> 修饰 ）存放在 Java 虚拟机的堆中。包装类型属于对象类型，我们知道几乎所有对象实例都存在于堆中。</p>
+<p><strong>占用空间</strong>：相比于包装类型（对象类型）， 基本数据类型占用的空间往往非常小。</p>
+<p><strong>默认值</strong>：成员变量包装类型不赋值就是 <code>null</code> ，而基本类型有默认值且不是 <code>null</code>。</p>
+<p><strong>比较方式</strong>：对于基本数据类型来说，<code>==</code> 比较的是值。对于包装数据类型来说，<code>==</code> 比较的是对象的内存地址。所有整型包装类对象之间值的比较，全部使用 <code>equals()</code> 方法。</p>
+<h3 id="包装类型的缓存机制"><a href="#包装类型的缓存机制" class="headerlink" title="包装类型的缓存机制"></a>包装类型的缓存机制</h3><p>byte，short，Interger，long这四种类型在【-128 ，127】之间的数据进行了缓存，也就是说你创建在这个范围内的数据时，并不会创建新的对象，而是直接从缓存取。</p>
+<p>超出这个范围才会真的创建对象</p>
+<p>两个浮点型并没有实现缓存机制。</p>
+<p>例题：</p>
+<p>Integer i1 = 33;<br>Integer i2 = 33;<br>System.out.println(i1 == i2);// 输出 true</p>
+<p>Float i11 = 333f;<br>Float i22 = 333f;<br>System.out.println(i11 == i22);// 输出 false</p>
+<p>Double i3 = 1.2;<br>Double i4 = 1.2;<br>System.out.println(i3 == i4);// 输出 false</p>
+<h3 id="自动拆箱装箱"><a href="#自动拆箱装箱" class="headerlink" title="自动拆箱装箱"></a>自动拆箱装箱</h3><p>装箱：把基本数据类型变成包装类，调用的是valueof()方法，</p>
+<p>拆箱：把包装类变成基本数据类型，调用的是xxxValue()方法</p>
+<h3 id="为什么浮点数运算时会有精度丢失的风险"><a href="#为什么浮点数运算时会有精度丢失的风险" class="headerlink" title="为什么浮点数运算时会有精度丢失的风险"></a>为什么浮点数运算时会有精度丢失的风险</h3><p>因为计算机存储无限循环的小数的时候不能完全存储，只能阶段，就会导致误差</p>
+<p>可以使用BigDecimal实现浮点数运算</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h3 id="成员变量和局部变量的区别"><a href="#成员变量和局部变量的区别" class="headerlink" title="成员变量和局部变量的区别"></a>成员变量和局部变量的区别</h3><p><strong>语法形式</strong>：从语法形式上看，成员变量是属于类的，而局部变量是在代码块或方法中定义的变量或是方法的参数；成员变量可以被 <code>public</code>,<code>private</code>,<code>static</code> 等修饰符所修饰，而局部变量不能被访问控制修饰符及 <code>static</code> 所修饰；但是，成员变量和局部变量都能被 <code>final</code> 所修饰。</p>
+<p><strong>存储方式</strong>：从变量在内存中的存储方式来看，如果成员变量是使用 <code>static</code> 修饰的，那么这个成员变量是属于类的，如果没有使用 <code>static</code> 修饰，这个成员变量是属于实例的。而对象存在于堆内存，局部变量则存在于栈内存。</p>
+<p><strong>生存时间</strong>：从变量在内存中的生存时间上看，成员变量是对象的一部分，它随着对象的创建而存在，而局部变量随着方法的调用而自动生成，随着方法的调用结束而消亡。</p>
+<p><strong>默认值</strong>：从变量是否有默认值来看，成员变量如果没有被赋初始值，则会自动以类型的默认值而赋值（一种情况例外:被 <code>final</code> 修饰的成员变量也必须显式地赋值），而局部变量则不会自动赋值。</p>
+<h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><p>静态变量被static所修饰，它被类中的所有实例所共享，不管有多少个实例，它们共享静态变量，这样静态变量只用被存储一次，节省内存。</p>
+<p>静态变量是通过类名的方式来访问的，也可以用对象名，但是不推荐</p>
+<h3 id="字符型常量和字符串常量的区别"><a href="#字符型常量和字符串常量的区别" class="headerlink" title="字符型常量和字符串常量的区别"></a>字符型常量和字符串常量的区别</h3><p><strong>形式</strong> : 字符常量是单引号引起的一个字符，字符串常量是双引号引起的 0 个或若干个字符。</p>
+<p><strong>含义</strong> : 字符常量相当于一个整型值( ASCII 值),可以参加表达式运算; 字符串常量代表一个地址值(该字符串在内存中存放位置)。</p>
+<p><strong>占内存大小</strong>：字符常量只占 2 个字节; 字符串常量占若干个字节。</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="静态方法为什么不能调用非静态成员"><a href="#静态方法为什么不能调用非静态成员" class="headerlink" title="静态方法为什么不能调用非静态成员"></a>静态方法为什么不能调用非静态成员</h3><p>因为静态方法是属于类的，在类加载的时候就会分配内存，而非静态成员是属于实例对象的，只有在对象实例化之后才存在，需要通过类的实例对象去访问。</p>
+<p>静态方法存在了，非静态成员都还没存在，所以调用属于非法操作。</p>
+<h3 id="重载和重写的区别"><a href="#重载和重写的区别" class="headerlink" title="重载和重写的区别"></a>重载和重写的区别</h3><p>重载：方法名必须相同，参数类型不同、个数不同、顺序不同，方法返回值和访问修饰符可以不同。</p>
+<p>重写：是子类对父类的允许访问的方法的实现过程进行重新编写。</p>
+<p>其中方法名，参数列表必须相同，如果被private，final，static修饰了就不能被重写</p>
+<h2 id="面向对象基础"><a href="#面向对象基础" class="headerlink" title="面向对象基础"></a>面向对象基础</h2><h3 id="面向对象和面向过程的区别"><a href="#面向对象和面向过程的区别" class="headerlink" title="面向对象和面向过程的区别"></a>面向对象和面向过程的区别</h3><p>面向过程是把解决问题的过程拆分成一个个方法，面向对象是先抽象出对象，再执行对象的方法。</p>
+<p>面向对象的程序更易于维护，易复用，易扩展</p>
+<h3 id="面向对象三大特征"><a href="#面向对象三大特征" class="headerlink" title="面向对象三大特征"></a>面向对象三大特征</h3><p>封装：把一个对象的状态信息（也就是属性）隐藏在对象内部，不允许外部对象直接访问对象的内部信息。但是可以提供一些可以被外界访问的方法来操作属性。</p>
+<p>继承：继承是使用已存在的类的定义作为基础建立新类的技术，新类的定义可以增加新的数据或新的功能，也可以用父类的功能，但不能选择性地继承父类。通过使用继承，可以快速地创建新的类，可以提高代码的重用，程序的可维护性，节省大量创建新类的时间 ，提高我们的开发效率。</p>
+<p>多态：父类的引用指向子类的实例。</p>
+<p>多态的特点：</p>
+<ul>
+<li>对象类型和引用类型之间必须是继承或者实现关系</li>
+<li>引用类型变量发出的方法调用的是哪个类的方法，必须在程序运行期间才能确定</li>
+<li>多态不能调用只在子类中存在，缺不在父类中存在的方法</li>
+<li>如果子类重写了父类的方法，则调用子类的方法，如果没有则调用父类的方法</li>
+</ul>
+<h3 id="接口和抽象类有什么异同"><a href="#接口和抽象类有什么异同" class="headerlink" title="*接口和抽象类有什么异同"></a>*接口和抽象类有什么异同</h3><p>共同点：</p>
+<ul>
+<li>都不能被实例化</li>
+<li>都可以包含抽象方法</li>
+<li>都可以包含默认实现的方法</li>
+</ul>
+<p>不同点：</p>
+<ul>
+<li>接口主要用来对类进行约束，你实现了某个接口就要实现它的方法，抽象类主要是为了代码复用</li>
+<li>一个类只能由一个父类，但是能有多个接口</li>
+<li>接口中的成员变量只能是 <code>public static final</code> 类型的，不能被修改且必须有初始值，而抽象类的成员变量默认 default，可在子类中被重新定义，也可被重新赋值</li>
+</ul>
+<h3 id="深拷贝和浅拷贝，引用拷贝"><a href="#深拷贝和浅拷贝，引用拷贝" class="headerlink" title="深拷贝和浅拷贝，引用拷贝"></a>深拷贝和浅拷贝，引用拷贝</h3><p>浅拷贝：浅拷贝会在堆上创建一个新的对象，不过原对象内部的属性是引用类型的话，浅拷贝会直接复制内部对象的引用地址，相对于两个对象公用一个内部对象</p>
+<p>深拷贝：完全复制整个对象，包含这个对象的内部对象</p>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><h3 id="Object类的常用方法"><a href="#Object类的常用方法" class="headerlink" title="Object类的常用方法"></a>Object类的常用方法</h3><p>Object是第一个类，是所有类的父类</p>
+<p>/**</p>
+<ul>
+<li>native 方法，用于返回当前运行时对象的 Class 对象，使用了 final 关键字修饰，故不允许子类重写。<br> <em>/<br> public final native Class&lt;?&gt; getClass()<br> /</em>*</li>
+<li>native 方法，用于返回对象的哈希码，主要使用在哈希表中，比如 JDK 中的HashMap。<br> <em>/<br> public native int hashCode()<br> /</em>*</li>
+<li>用于比较 2 个对象的内存地址是否相等，String 类对该方法进行了重写以用于比较字符串的值是否相等。<br> <em>/<br> public boolean equals(Object obj)<br> /</em>*</li>
+<li>native 方法，用于创建并返回当前对象的一份拷贝。<br> <em>/<br> protected native Object clone() throws CloneNotSupportedException<br> /</em>*</li>
+<li>返回类的名字实例的哈希码的 16 进制的字符串。建议 Object 所有的子类都重写这个方法。<br> <em>/<br> public String toString()<br> /</em>*</li>
+<li>native 方法，并且不能重写。唤醒一个在此对象监视器上等待的线程(监视器相当于就是锁的概念)。如果有多个线程在等待只会任意唤醒一个。<br> <em>/<br> public final native void notify()<br> /</em>*</li>
+<li>native 方法，并且不能重写。跟 notify 一样，唯一的区别就是会唤醒在此对象监视器上等待的所有线程，而不是一个线程。<br> <em>/<br> public final native void notifyAll()<br> /</em>*</li>
+<li>native方法，并且不能重写。暂停线程的执行。注意：sleep 方法没有释放锁，而 wait 方法释放了锁 ，timeout 是等待时间。<br> <em>/<br> public final native void wait(long timeout) throws InterruptedException<br> /</em>*</li>
+<li>多了 nanos 参数，这个参数表示额外时间（以毫微秒为单位，范围是 0-999999）。 所以超时的时间还需要加上 nanos 毫秒。。<br> <em>/<br> public final void wait(long timeout, int nanos) throws InterruptedException<br> /</em>*</li>
+<li>跟之前的2个wait方法一样，只不过该方法一直等待，没有超时时间这个概念<br> <em>/<br> public final void wait() throws InterruptedException<br> /</em>*</li>
+<li>实例被垃圾回收器回收的时候触发的操作<br> */<br> protected void finalize() throws Throwable { }</li>
+</ul>
+<h3 id="和equals-的区别"><a href="#和equals-的区别" class="headerlink" title="==和equals()的区别"></a>==和equals()的区别</h3><p>==对于基本数据类型和引用类型的作用效果是不同的</p>
+<p>对于基本数据类型来说，比较的是值</p>
+<p>对于引用类型来说，比较的是对象的内存地址</p>
+<p>而equals方法不能用来比较基本数据类型，只能用来判断两个对象是否相等。</p>
+<p>如果类没有重写equals方法，通过equals比较该类的两个对象时，等价于通过==比较</p>
+<p>类重写了equals方法，一般我们都重写equals来比较两个之间的属性是否相等，若属性相等则返回true</p>
+<p>String a = new String(“ab”); // a 为一个引用<br>String b = new String(“ab”); // b为另一个引用,对象的内容一样<br>String aa = “ab”; // 放在常量池中<br>String bb = “ab”; // 从常量池中查找<br>System.out.println(aa == bb);// true<br>System.out.println(a == b);// false<br>System.out.println(a.equals(b));// true<br>System.out.println(42 == 42.0);// true</p>
+<h3 id="为什么要有hashcode"><a href="#为什么要有hashcode" class="headerlink" title="为什么要有hashcode"></a>为什么要有hashcode</h3><p>其实， <code>hashCode()</code> 和 <code>equals()</code>都是用于比较两个对象是否相等。在一些容器（比如 <code>HashMap</code>、<code>HashSet</code>）中，有了 <code>hashCode()</code> 之后，判断元素是否在对应容器中的效率会更高（参考添加元素进<code>HashSet</code>的过程）！</p>
+<p>我们在前面也提到了添加元素进<code>HashSet</code>的过程，如果 <code>HashSet</code> 在对比的时候，同样的 <code>hashCode</code> 有多个对象，它会继续使用 <code>equals()</code> 来判断是否真的相同。也就是说 <code>hashCode</code> 帮助我们大大缩小了查找成本。</p>
+<h3 id="为什么重写equals时要重写hashcode"><a href="#为什么重写equals时要重写hashcode" class="headerlink" title="为什么重写equals时要重写hashcode"></a>为什么重写equals时要重写hashcode</h3><p>因为两个相等的对象的 <code>hashCode</code> 值必须是相等。也就是说如果 <code>equals</code> 方法判断两个对象是相等的，那这两个对象的 <code>hashCode</code> 值也要相等。</p>
+<p>如果重写 <code>equals()</code> 时没有重写 <code>hashCode()</code> 方法的话就可能会导致 <code>equals</code> 方法判断是相等的两个对象，<code>hashCode</code> 值却不相等。</p>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><h3 id="String，StringBuilder，StringBuffer的区别"><a href="#String，StringBuilder，StringBuffer的区别" class="headerlink" title="String，StringBuilder，StringBuffer的区别"></a>String，StringBuilder，StringBuffer的区别</h3><h4 id="可变性"><a href="#可变性" class="headerlink" title="可变性"></a>可变性</h4><p>string是不可变的</p>
+<p><code>StringBuilder</code> 与 <code>StringBuffer</code> 都继承自 <code>AbstractStringBuilder</code> 类，在 <code>AbstractStringBuilder</code> 中也是使用字符数组保存字符串，不过没有使用 <code>final</code> 和 <code>private</code> 关键字修饰，最关键的是这个 <code>AbstractStringBuilder</code> 类还提供了很多修改字符串的方法比如 <code>append</code> 方法。</p>
+<h4 id="线程安全性"><a href="#线程安全性" class="headerlink" title="线程安全性"></a>线程安全性</h4><p>String对象是不可变的，可以理解为常量，线程安全。</p>
+<p>StringBuffer对线程加了同步锁，所以也线程安全的</p>
+<p>StringBuilder线程不安全</p>
+<h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><p>每次对String进行改变，都会生成一个新的String对象，然后将指针指向新的String对象。</p>
+<p><code>StringBuffer</code> 每次都会对 <code>StringBuffer</code> 对象本身进行操作，而不是生成新的对象并改变对象引用。相同情况下使用 <code>StringBuilder</code> 相比使用 <code>StringBuffer</code> 仅能获得 10%~15% 左右的性能提升，但却要冒多线程不安全的风险。</p>
+<h3 id="String为什么是不可变的"><a href="#String为什么是不可变的" class="headerlink" title="String为什么是不可变的"></a>String为什么是不可变的</h3><p>保存字符串的数组被final修饰且私有，并且String类没有提供修改字符串的方法	</p>
+<p>String类被final修饰导致不能继承</p>
+<h3 id="字符串拼接用“-”还是StringBuilder"><a href="#字符串拼接用“-”还是StringBuilder" class="headerlink" title="字符串拼接用“+”还是StringBuilder"></a>字符串拼接用“+”还是StringBuilder</h3><p>java本身不支持重载，+和+=是专门为String重载的运算符，</p>
+<p>+实际上是提供StringBuilder调用append方法实现的，拼接完成后调用toString得到一个String对象</p>
+<p><strong>编译器不会创建单个 <code>StringBuilder</code> 以复用，会导致创建过多的 <code>StringBuilder</code> 对象</strong>。</p>
+<h3 id="字符串常量池"><a href="#字符串常量池" class="headerlink" title="字符串常量池"></a>字符串常量池</h3><p>是 JVM 为了提升性能和减少内存消耗针对字符串（String 类）专门开辟的一块区域，主要目的是为了避免字符串的重复创建。</p>
+<p>// 在堆中创建字符串对象”ab“<br>// 将字符串对象”ab“的引用保存在字符串常量池中<br>String aa = “ab”;<br>// 直接返回字符串常量池中字符串对象”ab“的引用<br>String bb = “ab”;<br>System.out.println(aa==bb);// true</p>
+<h3 id="String-s1-new-String-“abc”-这句话创建了几个字符串对象？"><a href="#String-s1-new-String-“abc”-这句话创建了几个字符串对象？" class="headerlink" title="String s1 = new String(“abc”);这句话创建了几个字符串对象？"></a>String s1 = new String(“abc”);这句话创建了几个字符串对象？</h3><p>会创建 1 或 2 个字符串对象。</p>
+<p>如果字符串常量池中不存在字符串对象“abc”的引用，那么它将首先在字符串常量池中创建，然后在堆空间中创建，因此将创建总共 2 个字符串对象。</p>
+<p>如果字符串常量池中已存在字符串对象“abc”的引用，则只会在堆中创建 1 个字符串对象“abc”。</p>
+<p>// 在堆中创建字符串对象”Java“<br>// 将字符串对象”Java“的引用保存在字符串常量池中<br>String s1 = “Java”;<br>// 直接返回字符串常量池中字符串对象”Java“对应的引用<br>String s2 = s1.intern();<br>// 会在堆中在单独创建一个字符串对象<br>String s3 = new String(“Java”);<br>// 直接返回字符串常量池中字符串对象”Java“对应的引用<br>String s4 = s3.intern();<br>// s1 和 s2 指向的是堆中的同一个对象<br>System.out.println(s1 == s2); // true<br>// s3 和 s4 指向的是堆中不同的对象<br>System.out.println(s3 == s4); // false<br>// s1 和 s4 指向的是堆中的同一个对象<br>System.out.println(s1 == s4); //true</p>
+<h3 id="String变量和常量相"><a href="#String变量和常量相" class="headerlink" title="String变量和常量相+"></a>String变量和常量相+</h3><p>String str1 = “str”;<br>String str2 = “ing”;<br>String str3 = “str” + “ing”;<br>String str4 = str1 + str2;<br>String str5 = “string”;<br>System.out.println(str3 == str4);//false<br>System.out.println(str3 == str5);//true<br>System.out.println(str4 == str5);//false</p>
+<p><strong>对于编译期可以确定值的字符串，也就是常量字符串 ，jvm 会将其存入字符串常量池。并且，字符串常量拼接得到的字符串常量在编译阶段就已经被存放字符串常量池，这个得益于编译器的优化。</strong></p>
+<p><strong>引用的值在程序编译期是无法确定的，编译器无法对其进行优化。</strong></p>
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><h3 id="exception和error区别"><a href="#exception和error区别" class="headerlink" title="exception和error区别"></a>exception和error区别</h3><p><strong><code>Exception</code></strong> :程序本身可以处理的异常，可以通过 <code>catch</code> 来进行捕获。<code>Exception</code> 又可以分为 Checked Exception (受检查异常，必须处理) 和 Unchecked Exception (不受检查异常，可以不处理)。</p>
+<p>**<code>Error</code>**：<code>Error</code> 属于程序无法处理的错误 ，不建议通过<code>catch</code>捕获 。例如 Java 虚拟机运行错误（<code>Virtual MachineError</code>）、虚拟机内存不够错误(<code>OutOfMemoryError</code>)、类定义错误（<code>NoClassDefFoundError</code>）等 。这些异常发生时，Java 虚拟机（JVM）一般会选择线程终止。</p>
+<h3 id="Checked-Exception-和-Unchecked-Exception-有什么区别？"><a href="#Checked-Exception-和-Unchecked-Exception-有什么区别？" class="headerlink" title="Checked Exception 和 Unchecked Exception 有什么区别？"></a>Checked Exception 和 Unchecked Exception 有什么区别？</h3><p><strong>Checked Exception</strong> 即 受检查异常 ，Java 代码在编译过程中，如果受检查异常没有被 <code>catch</code>或者<code>throws</code> 关键字处理的话，就没办法通过编译。</p>
+<p><strong>Unchecked Exception</strong> 即 <strong>不受检查异常</strong> ，Java 代码在编译过程中 ，我们即使不处理不受检查异常也可以正常通过编译。</p>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><h3 id="什么是泛型"><a href="#什么是泛型" class="headerlink" title="什么是泛型"></a>什么是泛型</h3><p>编译器可以对泛型参数进行检测，并且通过泛型参数可以指定传入的对象类型。比如 <code>ArrayList&lt;Person&gt; persons = new ArrayList&lt;Person&gt;()</code> 这行代码就指明了该 <code>ArrayList</code> 对象只能传入 <code>Person</code> 对象，如果传入其他类型的对象就会报错。</p>
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><h3 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h3><p>它赋予了我们在运行时分析类以及执行类中方法的能力。通过反射你可以获取任意一个类的所有属性和方法，你还可以调用这些方法和属性。</p>
+<h2 id="序列化和反序列化"><a href="#序列化和反序列化" class="headerlink" title="序列化和反序列化"></a>序列化和反序列化</h2><p>简单来说：</p>
+<ul>
+<li><strong>序列化</strong>：将数据结构或对象转换成二进制字节流的过程</li>
+<li><strong>反序列化</strong>：将在序列化过程中所生成的二进制字节流转换成数据结构或者对象的过程</li>
+</ul>
+<h2 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h2><p>数据输入到计算机内存就是输入，反之输出到外部存储就是输出</p>
+<ul>
+<li><code>InputStream</code>/<code>Reader</code>: 所有的输入流的基类，前者是字节输入流，后者是字符输入流。</li>
+<li><code>OutputStream</code>/<code>Writer</code>: 所有输出流的基类，前者是字节输出流，后者是字符输出流。</li>
+</ul>
 
                 
             </div>
@@ -517,7 +589,7 @@ NioEventLoopGroup() : EventLoop是一个selector加上一个thread就是一个ev
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zjpzytzjp.github.io/2023/07/06/netty/">https://zjpzytzjp.github.io/2023/07/06/netty/</a>
+                    <a href="https://zjpzytzjp.github.io/2023/08/10/java%E5%9F%BA%E7%A1%80/">https://zjpzytzjp.github.io/2023/08/10/java%E5%9F%BA%E7%A1%80/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -554,7 +626,11 @@ NioEventLoopGroup() : EventLoop是一个selector加上一个thread就是一个ev
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/JAVA/">
+                                    <span class="chip bg-color">JAVA</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -902,32 +978,44 @@ NioEventLoopGroup() : EventLoop是一个selector加上一个thread就是一个ev
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/07/18/java%E5%9F%BA%E7%A1%80/">
+                <a href="/2023/08/10/java%E5%B9%B6%E5%8F%91/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="JAVA并发">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">JAVA并发</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            JAVA并发
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-18
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-10
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            zjp
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JAVA/" class="post-category">
+                                    JAVA
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JAVA/">
+                        <span class="chip bg-color">JAVA</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -936,37 +1024,48 @@ NioEventLoopGroup() : EventLoop是一个selector加上一个thread就是一个ev
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/07/06/netty/">
+                <a href="/2023/08/10/redis/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="redis">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">redis</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            redis笔记
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-10
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            zjp
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/redis/" class="post-category">
+                                    redis
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -1366,6 +1465,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-z16"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false});</script></body>
 
 </html>
