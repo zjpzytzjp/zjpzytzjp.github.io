@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="friends, java,redis,mysql,java并发,JVM,算法">
-    <meta name="description" content="本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景。">
+    <meta name="keywords" content="java,redis,mysql,java并发,JVM,算法">
+    <meta name="description" content="nettynetty入门服务端ServerBootstrap()  :  启动器，负责组装netty组件，启动服务器
+NioEventLoopGroup() : EventLoop是一个selector加上一个thread就是一个event">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>friends | zjpBlog</title>
+    <title>zjpBlog</title>
     <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/favicon.png">
     
 
@@ -333,365 +334,292 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
-    <div class="container">
-    <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                君子坐而论道
-                
-            </div>
-
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="/libs/typed/typed.js"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: [ 
-                            
-                                "从来没有真正的绝境, 只有心灵的迷途",
-                            
-                                "Never really desperate, only the lost of the soul",
-                            
-                        ],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
-</script>
-<script>
     
-      var bannerUrl = "/medias/featureimages/" + Math.floor(Math.random() * 24) + '.jpg';
-    
-    $('.bg-cover.about-cover').css('background-image', 'url(' + bannerUrl + ')');
-
-</script>
 
 
-    </div>
-</div>
-<style>
-    .friends-container {
-        margin-top: -100px;
-        margin-bottom: 30px;
-    }
 
-    .friends-container .tag-title {
-        margin-bottom: 10px;
-        color: #3C4858;
-        font-size: 1.75rem;
-        font-weight: 400;
-    }
-
-    .frind-ship img {
-        border-radius: 50%;
-    }
-
-    /* 一下是按钮样式 */
-
-    .frind-ship {
-        padding: 10px 20px;
-    }
-
-    .frind-ship .title {
-        display: flex;
-        align-items: center;
-    }
-
-    .frind-ship .title div {
-        color: #fff;
-        padding-left: 10px;
-    }
-
-    .frind-ship .title img {
-        width: 100px;
-        height: 100px;
-        flex-shrink: 0;
-    }
-
-    .frind-ship .title h1 {
-        padding-bottom: 5px;
-        border-bottom: 2px solid #fff;
-        position: relative;
-        top:-15px;
-        left: 3px;
-    }
-
-    .friend-button {
-        display: flex;
-        justify-content: center;
-        margin-bottom: -27px;
-    }
-
-    .friend-button a {
-        border-radius: 40px;
-    }
-
-    .friend-all .tag-post {
-        margin-bottom: 30px;
-    }
-
-    .button-caution {
-        background-color: #FF4351;
-        border-color: #FF4351;
-        color: #FFF;
-    }
-
-    .button {
-        font-weight: 300;
-        font-size: 16px;
-        font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-        text-decoration: none;
-        text-align: center;
-        line-height: 40px;
-        height: 40px;
-        padding: 0 40px;
-        margin: 0;
-        display: inline-block;
-        appearance: none;
-        cursor: pointer;
-        border: none;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        -webkit-transition-property: all;
-        transition-property: all;
-        -webkit-transition-duration: .3s;
-        transition-duration: .3s;
-    }
-
-    .title {
-        margin-bottom: 0rem !important;
-    }
-
-    .card {
-        margin: 3rem 0 1rem 0 !important;
-    }
-
-    .button-glow.button-caution {
-        -webkit-animation-name: glowing-caution;
-        animation-name: glowing-caution;
-    }
-
-    @-webkit-keyframes glowing-caution {
-        from {
-            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-        }
-
-        50% {
-            -webkit-box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-            box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-        }
-
-        to {
-            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-        }
-    }
-
-    @keyframes glowing-caution {
-        from {
-            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-        }
-
-        50% {
-            -webkit-box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-            box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-        }
-
-        to {
-            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-        }
-    }
-
-    .button-caution:hover {
-        background-color: #ff7680;
-        border-color: #ff7680;
-        color: #FFF;
-        text-decoration: none;
-    }
-
-    .frind-card1 {
-        background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-    }
-
-    .frind-card2 {
-        background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-
-    .frind-card3 {
-        background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
-    }
-
-    .frind-card4 {
-        background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
-    }
-
-    .frind-card5 {
-        background-image: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
-    }
-
-    .frind-card6 {
-        background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
-    }
-
-    .frind-card7 {
-        background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
-    }
-
-    .frind-card8 {
-        background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
-    }
-
-    .frind-card9 {
-        background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
-    }
-
-    .frind-card10 {
-        background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
-    }
-
-    article .card {
-        overflow: visible !important;
-    }
-</style>
-
-<main class="content">
-    <div class="container friends-container">
-        <div class="card">
-            <div class="card-content">
-                <div class="tag-title center-align">
-                    <i class="fas fa-address-book"></i>&nbsp;&nbsp;友情链接
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title"></h1>
                 </div>
-                <article id="friends-link">
-                    
-                    
-                    <div class="row tags-posts friend-all">
-                        
-                        
-                        <div class="col s12 m6 l4 friend-div" data-aos="zoom-in-up">
-                            <div class="card frind-card1">
-                                <div class="frind-ship">
-                                    <div class="title">
-                                        <img src="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/csdn.png" alt="img">
-                                        <div>
-                                            <h1 class="friend-name">Blog</h1>
-                                            <p style="position: relative;top: -35px;">CSDN社区</p>
-                                        </div>
-                                    </div>
-                                    <div class="friend-button">
-                                        <a href="https://blog.csdn.net/guixinchn" target="_blank"
-                                            class="button button-glow button-rounded button-caution">
-                                            CSDN
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                        <div class="col s12 m6 l4 friend-div" data-aos="zoom-in-up">
-                            <div class="card frind-card2">
-                                <div class="frind-ship">
-                                    <div class="title">
-                                        <img src="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/bokeyuan.png" alt="img">
-                                        <div>
-                                            <h1 class="friend-name">Blog</h1>
-                                            <p style="position: relative;top: -35px;">博客园</p>
-                                        </div>
-                                    </div>
-                                    <div class="friend-button">
-                                        <a href="https://www.cnblogs.com/guixinchn/" target="_blank"
-                                            class="button button-glow button-rounded button-caution">
-                                            博客园
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                        <div class="col s12 m6 l4 friend-div" data-aos="zoom-in-up">
-                            <div class="card frind-card3">
-                                <div class="frind-ship">
-                                    <div class="title">
-                                        <img src="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/github.png" alt="img">
-                                        <div>
-                                            <h1 class="friend-name">github</h1>
-                                            <p style="position: relative;top: -35px;">github</p>
-                                        </div>
-                                    </div>
-                                    <div class="friend-button">
-                                        <a href="https://github.com/guixinchn" target="_blank"
-                                            class="button button-glow button-rounded button-caution">
-                                            github
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                        <div class="col s12 m6 l4 friend-div" data-aos="zoom-in-up">
-                            <div class="card frind-card4">
-                                <div class="frind-ship">
-                                    <div class="title">
-                                        <img src="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/touxiang.jpg" alt="img">
-                                        <div>
-                                            <h1 class="friend-name">Blog</h1>
-                                            <p style="position: relative;top: -35px;">咕咕星</p>
-                                        </div>
-                                    </div>
-                                    <div class="friend-button">
-                                        <a href="https://ythan.top" target="_blank"
-                                            class="button button-glow button-rounded button-caution">
-                                            咕咕星
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    
-                </article>
             </div>
         </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-07-06
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.5k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
 
         
 
-        <div class="card">
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="netty"><a href="#netty" class="headerlink" title="netty"></a>netty</h1><h2 id="netty入门"><a href="#netty入门" class="headerlink" title="netty入门"></a>netty入门</h2><h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><p>ServerBootstrap()  :  启动器，负责组装netty组件，启动服务器</p>
+<p>NioEventLoopGroup() : EventLoop是一个selector加上一个thread就是一个eventloop，即循环处理可读可写事件，既然是group就是组的意思，里面有BossEventLoop和WorkerEventLoop，分别处理accept和读写的事件</p>
+<p>NioServerSocketChannel() : 选择服务器ServerSocketChannel的实现，OIO，BIO</p>
+<p>childHandle：决定了worker（child）能做哪些事情</p>
+<p>channelInitializer：channel代表和客户端进行数据读写的通道， Initializer初始化，负责添加别的handler</p>
+<p>StringDecoder()：将ByteBuf进行解码，转换成字符串</p>
+<p>ChannelInboundHandleAdapter：自定义handler</p>
+<p>bind：绑定监听端口</p>
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p>Bootstrap() : 启动类</p>
+<p>StringEncoder() : 编码器</p>
+<p>connect：链接哪个服务器</p>
+<p>sync（）：阻塞方法，直到连接建立</p>
+<p>writeAndFlush（）：向服务器发送数据</p>
+<p>channel：就像数据的通道</p>
+<p>msg：流动的数据</p>
+<p>handle：数据的处理工序</p>
+<p>pipeline：工序有多道，就是流水线</p>
+<p>handle分为Inbound 和 Outbound，入站和出站</p>
+<p>eventloop：干活的工人，处理数据</p>
+<ol>
+<li>工人可以管理多个channel 的 io操作，且一个工人只要负责了一个channel，就会绑定，负责到底</li>
+<li>一个工人既可以处理io操作，也可以处理普通任务</li>
+<li>工人按照pipeline的顺序，按序执行handle</li>
+</ol>
+<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><h3 id="EventLoop"><a href="#EventLoop" class="headerlink" title="EventLoop"></a>EventLoop</h3><p>事件循环对象</p>
+<p>eventloop本质上是一个单线程执行器（同时维护了一个selector），里面有run方法源源不断地处理Channel里面的IO事件</p>
+<p>由于它继承过一个线程池的类，因此包含所有的线程池的方法</p>
+<p>并且还包含判断当前线程是否属于此EventLoop的方法和查看自己属于哪个EventLoopGroup</p>
+<p>事件循环组</p>
+<p>EventLoopGroup是一组EventLoop，Channel会调用EventLoopGroup中的register方法来绑定其中一个eventloop，后续这个channel的IO事件都由此Eventloop执行（保证了IO的线程安全）</p>
+<p>如何实现handle换人，源码分析</p>
+<p><code>static void invokeChannelRead(final AbstractChannelHandlerContext next, Object msg) {     final Object m = next.pipeline.touch(ObjectUtil.checkNotNull(msg, "msg"), next);       // 下一个handle的事件循环是否和这个事件循环是一个线程</code></p>
+<p>​			<code>EventExecutor executor = next.executor();//返回下一个handle的eventLoop</code></p>
+<p>​	<code>// 是，直接调用        if (executor.inEventLoop()) {  ​        next.invokeChannelRead(m); ​    	}</code>		</p>
+<p>​     <code>// 不是，将要执行的代码作为任务提交给下一个事件循环处理</code></p>
+<p><code>else {         executor.execute(new Runnable() { // 如果是外部线程，则提交给异步任务队列             @Override             public void run() {                 next.invokeChannelRead(m);             }         });     } }</code></p>
+<h3 id="channel"><a href="#channel" class="headerlink" title="channel"></a>channel</h3><p>channel的主要作用：</p>
+<ol>
+<li>close()关闭chanel</li>
+<li>closeFuture()处理channel的关闭</li>
+</ol>
+<p>​			{</p>
+<p>​				如果想要在关闭channel后执行一些操作会发现一个问题，那就是因为close方法也是异步调用的方法，				这就导致了，写在close方法后的操作不是在真正关闭后执行的，因为close异步的，执行close后会立马				执行之后的代码，达不到想要的效果，因此我们需要用closedFuture对象，调用sync方法解决</p>
+<p>​			}</p>
+<p>​		其中sync()：同步等待channel关闭</p>
+<p>​				{</p>
+<p>​						如果不适用sync方法会出现问题，因为connect方法是异步非阻塞的，main线程调用了connect，						但是实际执行connect的是nio线程，没有sync方法，main方法直接去准备拿channel了，但是那时						候connect还没执行完，sync会阻塞当前线程，直到nio线程执行完毕</p>
+<p>​					}</p>
+<p>​				addlistener：异步等待channel关闭</p>
+<ol start="3">
+<li>pipeline()添加处理器</li>
+<li>write：写入数据</li>
+<li>writeAndFlush：将数据写入并刷出</li>
+</ol>
+<p>*带有future，promise的类型都是和 异步方法配套使用的</p>
+<p>异步提升的是吞吐量而不是缩短响应时间</p>
+<h3 id="Future-Promise"><a href="#Future-Promise" class="headerlink" title="Future &amp; Promise"></a>Future &amp; Promise</h3><p>jdk的future只能同步</p>
+<p>netty的future可以同步也能异步，但都是等到任务结束才能得到结果</p>
+<p>netty promise脱离了任务独立存在，只作为两个线程传递结果的容器</p>
+<h3 id="channel-1"><a href="#channel-1" class="headerlink" title="channel"></a>channel</h3><p>用来处理Channel的各种事件，分为入站和出站</p>
+<h3 id="pipeline"><a href="#pipeline" class="headerlink" title="pipeline"></a>pipeline</h3><p>所有的handle连成串，就是pipeline</p>
+<p>pipeline.addlast()：添加处理器</p>
+<p>super.channelRead()：把数据传递给下一个handle</p>
+<p>使用channel.write（）会从tail开始往前找，使用ctx会从当前的handle开始往前找</p>
+<h3 id="ByteBuf"><a href="#ByteBuf" class="headerlink" title="ByteBuf"></a>ByteBuf</h3><p>是对字节数据的封装</p>
+<p>创建方法：</p>
+<p><code>ByteBuf buffer = ByteBufAllocator.DEFAULT.buffer(10);</code></p>
+<h4 id="直接内存和堆内存"><a href="#直接内存和堆内存" class="headerlink" title="直接内存和堆内存"></a>直接内存和堆内存</h4><p>直接内存创建和销毁代价昂贵，但读写性能高（少一次内存复制），适合配合池化功能一起使用</p>
+<p>直接内存对GC压力小，因为这部分内存不受JVM垃圾回收的管理，但也要及时主动释放</p>
+<h4 id="池化"><a href="#池化" class="headerlink" title="池化"></a>池化</h4><p>池化最大的意义在于可以重用bytebuf，如果没有池化，每次都要创建新的bytebuf实例，这个操作对于直接内存代价昂贵，有了池化可以重用bytebuf池中的实例，并且采用内存分配算法提升分配效率，高并发时，池化也更节约内存，防止内存溢出</p>
+<h4 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h4><p><img src="C:\Users\zoujiapeng\AppData\Roaming\Typora\typora-user-images\image-20230707111444450.png" alt="image-20230707111444450"></p>
+<p>bytebuf有容量和最大容量，容量超了就会开启扩容。</p>
+<p>其中灰色为读指针已经读过的地方，为废弃的，绿色为写指针已经写了，读指针还没读的区域，为可读区域，蓝色部分为容量足够但写指针还没写的区域，为可写区域</p>
+<h4 id="内存释放"><a href="#内存释放" class="headerlink" title="内存释放"></a>内存释放</h4><p>Netty使用的是引用计数法来控制回收内存，每个bytebuf对象的初始计数为1，调用release方计数减1，如果计数为0，则被回收，调用retain方法计数加一</p>
+<p>由谁来执行release呢？</p>
+<p>谁是最后负责人，谁来执行release。</p>
+<h4 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h4><p>零拷贝的体现之一，对bytebuf进行切片成多个Bytebuf，切片后的bytebuf没有发生内存复制，切片后的bytebuf维护独立的read，write指针</p>
+<h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><ul>
+<li>池化，可以复用池中bytebuf实例，更节约内存，减少内存溢出的可能</li>
+<li>读写指针分离，不需要像bytebuffer一样切换读写模式</li>
+<li>可以自动扩容</li>
+<li>支持链式调用</li>
+<li>很多地方体现了零拷贝，例如slice，duplicate，compositebytebuf</li>
+</ul>
+<h2 id="netty进阶"><a href="#netty进阶" class="headerlink" title="netty进阶"></a>netty进阶</h2><h3 id="粘包与半包"><a href="#粘包与半包" class="headerlink" title="粘包与半包"></a>粘包与半包</h3><p>粘包是因为TCP有一个滑动窗口，滑动窗口缓存了多个报文就会粘包</p>
+<p>半包是滑动窗口不够大，只能把一个报文的一部分装下发送再发送剩下的</p>
+
+                
+            </div>
+            <hr/>
 
             
 
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">zjp</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://zjpzytzjp.github.io/2023/07/06/netty/">https://zjpzytzjp.github.io/2023/07/06/netty/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">zjp</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
             
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
 
             
+        </div>
+    </div>
 
-            
+    
 
-            
-            <style>
+    
+
+    
+
+    
+
+    
+        <style>
     .valine-card {
         margin: 1.5rem auto;
     }
@@ -957,23 +885,206 @@
 <!--酷Q推送-->
 
 
-            
+    
 
-            
+    
 
-            
+    
 
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/07/18/java%E5%9F%BA%E7%A1%80/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-18
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            zjp
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/07/06/netty/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            zjp
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
         </div>
     </div>
-</main>
+</div>
 
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
 <script>
     $(function () {
-        $('#friends-link').masonry({
-            itemSelector: '.friend-div'
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
         });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
     });
 </script>
+
+    
+
+</main>
+
+
 
 
     <footer class="page-footer bg-color">
